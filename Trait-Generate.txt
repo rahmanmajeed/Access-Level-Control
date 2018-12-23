@@ -1,0 +1,53 @@
+Step-1:
+php artisan make:command TraitMakeCommand
+
+Step-2:
+Crete a stubs directory inside app/console/commands/`stubs` and create file `trait.stub` and save it.
+
+Step-3:
+<?php
+namespace DummyNamespace;
+trait DummyClass
+{
+    //
+}
+paste this code inside trait.stub file.
+
+Step-4:
+Finally make some changes to class TraitMakeCommand as below:-
+use Illuminate\Console\GeneratorCommand;
+class:
+
+protected $name = 'make:trait';
+    #initially this named as signature, change it to name.
+/**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Create a new trait';
+    protected $type='Trait';
+     
+    /**
+     * Get the stub file for the generator.
+     *
+     * @return string
+     */
+    protected function getStub()
+    {
+        return __DIR__.'/stubs/trait.stub';
+    }
+    /**
+     * Get the default namespace for the class.
+     *
+     * @param  string  $rootNamespace
+     * @return string
+     */
+    protected function getDefaultNamespace($rootNamespace)
+    {
+        return $rootNamespace.'\Traits';
+    }
+
+
+Step-5:
+php artisan make:trait UserTrait
