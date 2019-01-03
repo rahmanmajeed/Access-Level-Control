@@ -38,5 +38,6 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/admin','ADMIN\AppController@index')->name('admin.app');
+Route::get('/user/list','ADMIN\AppController@userList')->name('userlist.app');
 Route::get('/manager','Manager\AppController@index')->name('manager.app');
 Route::get('/employee','Employee\EmployeeController@index')->name('employee.index');

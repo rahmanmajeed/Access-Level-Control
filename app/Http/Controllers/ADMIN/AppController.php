@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\ADMIN;
 
+use App\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
@@ -14,7 +15,13 @@ class AppController extends Controller
 
     public function index()
     {
-        return "Request approved you're now Admin Area";
+        return view('admin');
+    }
+
+    public function userList()
+    {
+        $users=User::all();
+        return response()->json($users,201);
     }
 
 }
